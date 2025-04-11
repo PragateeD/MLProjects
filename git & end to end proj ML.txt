@@ -1,0 +1,49 @@
+**END TO END ML PRoject**
+1)create public repository 
+2)create system folder
+3)create Virtual env
+python -m venv venv
+
+activate env
+venv\scripts\activate
+
+4)git init--(in system folder in vs code terminal)
+5)create README.md file
+git add README.md
+6)create git commit -m "first commit"
+7)git branch -M main
+git remote add origin https://github.com/PragateeD/MLProjects.git
+git push -u origin main
+(if we want to check profile then use git config__global user.email)
+8)do git push -u origin main(in termnl)
+8)create new file in git as .gitignore and select python and commit
+9)do in terminal--git pull
+
+
+from setuptools import find_packages,setup
+from typing import List
+
+HYPEN_E_DOT='-e .'
+def get_requirements(file_path:str)->List[str]:
+    '''
+    this function will return the list of requirements
+    '''
+    requirements=[]
+    with open (file_path) as file_obj:
+        requirements=file_obj.readlines()
+        requirements=[req.replace('\n','') for req in requirements]
+
+        if HYPEN_E_DOT in requirements:
+            requirements.remove(HYPEN_E_DOT)
+        return requirements
+    
+setup(
+    name='mlproject',
+    version='0.0.1',
+    author='pragatee',
+    author_email='pragateedeshmukh@gmal.com',
+    packages=find_packages(),
+    install_requires=get_requirements('requirements.txt')
+)
+
+do pip install -r requirements.txt (all dependencies will be downloaded and ml project.egg.info will be created))
